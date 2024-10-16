@@ -28,6 +28,7 @@
     "@swc/helpers": "~0.5.11",
     "@testing-library/jest-native": "~5.4.3",
     "@testing-library/react-native": "~12.5.0",
+    "@types/jest": "^29.5.13",
     "@types/node": "18.16.9",
     "@types/react": "~18.2.45",
     "eslint": "^9.8.0",
