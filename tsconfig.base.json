@@ -15,7 +15,8 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@mobile/*": ["./apps/mobile/src/*"]
+			"@mobile/*": ["./apps/mobile/src/*"],
+			"@libs/movie-api": ["libs/movie-api/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
