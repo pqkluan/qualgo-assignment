@@ -2,7 +2,7 @@ import { useDeferredValue } from 'react';
 import { UndefinedInitialDataOptions, useQuery } from '@tanstack/react-query';
 
 import { imdbApi } from '../imdb-api';
-import { Movie } from '../types';
+import { IMDbSearchResponse, Movie } from '../types';
 import { queryKeys } from '../query-key-factory';
 import { POSTER_RATIO } from '../constants';
 
@@ -11,6 +11,10 @@ type Params = Omit<
 	'queryKey' | 'queryFn'
 > & {
 	keyword: string;
+};
+
+type DescriptionWithRequiredPoster = IMDbSearchResponse['description'][0] & {
+	'#IMG_POSTER': string;
 };
 
 /**
@@ -31,7 +35,11 @@ export const useSearchMovie = (params: Params) => {
 		queryKey: queryKeys.search(deferredKeyword),
 		queryFn: async () => {
 			const responseBody = await imdbApi.searchMovies({ searchQuery: deferredKeyword });
-			const data = responseBody.description;
+
+			// Filter out movies without poster, for the sake of UI consistency
+			const data = responseBody.description.filter(
+				(data): data is DescriptionWithRequiredPoster => !!data['#IMG_POSTER'],
+			);
 
 			const searchResults = data.map<Movie>((data) => ({
 				movieId: data['#IMDB_ID'],

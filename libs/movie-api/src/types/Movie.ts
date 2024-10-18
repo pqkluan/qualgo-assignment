@@ -4,6 +4,6 @@
 export type Movie = {
 	movieId: string;
 	title: string;
-	posterUrl?: string;
+	posterUrl: string;
 	posterRatio: number;
 };
