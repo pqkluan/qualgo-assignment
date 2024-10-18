@@ -1,5 +1,6 @@
-import { FC, useCallback } from 'react';
-import { FlatList, ListRenderItem, RefreshControl, View } from 'react-native';
+import { FC, Fragment, useCallback } from 'react';
+import { ListRenderItem, RefreshControl, View } from 'react-native';
+import Animated, { AnimatedRef } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
@@ -7,8 +8,9 @@ import { Movie, useRandomMovies } from '@libs/movie-api';
 import { EmptyList } from '@mobile/components/EmptyList';
 import { GenericError } from '@mobile/components/GenericError';
 
-import { MovieItem } from './MovieItem';
 import { useDelayEnabled } from '@mobile/hooks/useDelayEnabled';
+
+import { MovieItem } from './MovieItem';
 
 // Default data needs to be out of the component to prevent re-creation on each render
 const defaultData: Movie[] = [];
@@ -16,13 +18,16 @@ const defaultData: Movie[] = [];
 const keyExtractor = (item: Movie) => item.movieId;
 
 type Props = {
+	flatListRef: AnimatedRef<Animated.FlatList<unknown>>;
+	headerTopPadding: number;
 	onItemPress: (movieId: string) => void;
 };
 
 export const RandomMovieList: FC<Props> = (props) => {
-	const { onItemPress } = props;
+	const { flatListRef, headerTopPadding, onItemPress } = props;
 
 	const { styles, theme } = useStyles(stylesheet);
+
 	const apiEnabled = useDelayEnabled();
 	const {
 		data = defaultData,
@@ -38,17 +43,24 @@ export const RandomMovieList: FC<Props> = (props) => {
 	);
 
 	return (
-		<FlatList
+		<Animated.FlatList
+			ref={flatListRef}
 			testID='movie-list'
 			contentContainerStyle={styles.container}
 			keyExtractor={keyExtractor}
 			data={data}
 			renderItem={renderItem}
-			ListHeaderComponent={isError ? GenericError : undefined}
+			ListHeaderComponent={
+				<Fragment>
+					<View style={{ height: headerTopPadding }} />
+					{isError ? <GenericError /> : null}
+				</Fragment>
+			}
 			ListEmptyComponent={isFetched ? EmptyList : undefined}
 			ListFooterComponent={Footer}
 			ItemSeparatorComponent={Separator}
 			showsVerticalScrollIndicator={false}
+			scrollEventThrottle={16}
 			refreshControl={
 				<RefreshControl
 					refreshing={isLoading}

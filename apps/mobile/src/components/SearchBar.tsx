@@ -10,8 +10,8 @@ import {
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import SearchIcon from '@mobile/assets/icons/search.svg';
-import { colors } from '@mobile/themes/colors';
 import { Text } from '@mobile/components/Text';
+import { colors } from '@mobile/themes/colors';
 
 interface Props extends TextInputProps {
 	containerStyle?: StyleProp<ViewStyle>;

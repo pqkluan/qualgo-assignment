@@ -2,8 +2,8 @@ import { FC, Fragment } from 'react';
 import { View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-import { Chip } from '@mobile/components/Chip';
 import { MovieDetail } from '@libs/movie-api';
+import { Chip } from '@mobile/components/Chip';
 import { MoviePoster } from '@mobile/components/MoviePoster';
 import { Text } from '@mobile/components/Text';
 

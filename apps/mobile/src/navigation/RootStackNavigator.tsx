@@ -6,8 +6,8 @@ import {
 } from '@react-navigation/native-stack';
 
 import { HomeScreen } from '@mobile/screens/HomeScreen';
-import { SearchScreen } from '@mobile/screens/SearchScreen';
 import { MovieDetailScreen } from '@mobile/screens/MovieDetailScreen';
+import { SearchScreen } from '@mobile/screens/SearchScreen';
 
 import { RootStackParamList } from './types/RootStackParamList';
 

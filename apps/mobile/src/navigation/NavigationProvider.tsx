@@ -1,5 +1,5 @@
-import React, { FC, PropsWithChildren } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import React, { FC, PropsWithChildren } from 'react';
 
 type Props = PropsWithChildren;
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import FastImage from 'react-native-fast-image';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 type FastImageProps = React.ComponentProps<typeof FastImage>;
 type ExtendedProps = Omit<FastImageProps, 'source'>;

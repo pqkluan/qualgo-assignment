@@ -3,8 +3,8 @@ import { TouchableOpacity } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import { Movie } from '@libs/movie-api';
-import { Text } from '@mobile/components/Text';
 import { MoviePoster } from '@mobile/components/MoviePoster';
+import { Text } from '@mobile/components/Text';
 
 type Props = {
 	item: Movie;

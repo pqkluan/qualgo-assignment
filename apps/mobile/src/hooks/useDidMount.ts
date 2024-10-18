@@ -1,4 +1,5 @@
 import { EffectCallback, useEffect } from 'react';
+
 /**
  * Wrapper for useEffect that only runs on mount.
  * Because adding eslint-disable-next-line every where is not a good practice.

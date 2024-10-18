@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { ScreenProps } from '@mobile/navigation/types/ScreenProps';
-import { useDidMount } from '@mobile/hooks/useDidMount';
 import { ScreenWrap } from '@mobile/components/ScreenWrap';
+import { useDidMount } from '@mobile/hooks/useDidMount';
+import { ScreenProps } from '@mobile/navigation/types/ScreenProps';
 
 import { MovieDetailScrollView } from './MovieDetailScrollView';
 
@@ -18,8 +18,6 @@ export const MovieDetailScreen: FC<Props> = (props) => {
 		// Missing important data, pop by default
 		navigation.goBack();
 	});
-
-	// FIXME: missing back button
 
 	return (
 		<ScreenWrap testID='home-screen' safeTop={false} safeBottom={false}>

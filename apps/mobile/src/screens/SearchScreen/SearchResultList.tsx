@@ -1,5 +1,7 @@
-import { FC, useCallback, useMemo } from 'react';
-import { FlatList, ListRenderItem, RefreshControl, View } from 'react-native';
+import { FC, Fragment, useCallback, useMemo } from 'react';
+import { ListRenderItem, RefreshControl, View } from 'react-native';
+import Animated, { AnimatedRef } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import { Movie, useSearchMovie } from '@libs/movie-api';
@@ -7,10 +9,11 @@ import { EmptyList } from '@mobile/components/EmptyList';
 import { GenericError } from '@mobile/components/GenericError';
 
 import { SearchResultItem } from './SearchResultItem';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = {
+	flatListRef: AnimatedRef<Animated.FlatList<unknown>>;
 	searchKeyword: string;
+	headerTopPadding: number;
 	onItemPress: (username: string) => void;
 };
 
@@ -19,7 +22,7 @@ const keyExtractor = (item: Movie) => item.movieId;
 const hiddenItemId = 'hidden-item' as const;
 
 export const SearchResultList: FC<Props> = (props) => {
-	const { searchKeyword: keyword, onItemPress } = props;
+	const { flatListRef, searchKeyword: keyword, headerTopPadding, onItemPress } = props;
 
 	const { styles, theme } = useStyles(stylesheet);
 
@@ -50,14 +53,20 @@ export const SearchResultList: FC<Props> = (props) => {
 	}, [refetch]);
 
 	return (
-		<FlatList
+		<Animated.FlatList
+			ref={flatListRef}
 			testID={'search-result-list'}
 			contentContainerStyle={styles.contentContainer}
 			columnWrapperStyle={styles.columnWrapper}
 			keyExtractor={keyExtractor}
 			data={paddedData}
 			renderItem={renderItem}
-			ListHeaderComponent={isError ? GenericError : undefined}
+			ListHeaderComponent={
+				<Fragment>
+					<View style={{ height: headerTopPadding }} />
+					{isError ? <GenericError /> : null}
+				</Fragment>
+			}
 			ListEmptyComponent={isFetched ? EmptyList : undefined}
 			ListFooterComponent={Footer}
 			keyboardShouldPersistTaps={'always'}

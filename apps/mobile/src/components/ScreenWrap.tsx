@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useMemo } from 'react';
 import { StatusBar, StyleProp, View, ViewStyle } from 'react-native';
-import { SafeAreaView, Edge } from 'react-native-safe-area-context';
+import { Edge, SafeAreaView } from 'react-native-safe-area-context';
 
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
