@@ -1,15 +1,9 @@
-// FIXME: update this type to match the API response
+/**
+ * Simple movie data for list display.
+ */
 export type Movie = {
 	movieId: string;
 	title: string;
-
-	alias: string;
-	year: number;
-	rank: number;
-
 	posterUrl?: string;
-	posterWidth?: number;
-	posterHeight?: number;
-
-	actors: string;
+	posterRatio: number;
 };
