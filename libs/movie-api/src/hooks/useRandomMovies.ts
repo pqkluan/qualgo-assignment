@@ -52,7 +52,6 @@ const getRandomKeyword = () => {
 		'Music',
 		'Musical',
 		'Mystery',
-		'Romance',
 		'Sci-Fi',
 		'Sport',
 		'Thriller',
