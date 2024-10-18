@@ -21,7 +21,8 @@
     "react-native-safe-area-context": "*",
     "react-native-unistyles": "*",
     "@tanstack/react-query": "*",
-    "react-native-fast-image": "*"
+    "react-native-fast-image": "*",
+    "html-entities": "*"
   },
   "devDependencies": {}
 }

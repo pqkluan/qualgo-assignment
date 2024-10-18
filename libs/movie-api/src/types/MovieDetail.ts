@@ -7,12 +7,14 @@ export type MovieDetail = {
 	title: string;
 	description: string;
 	posterUrl: string;
+	posterRatio: number;
 	actors: string[];
 	keywords: string[];
 	reviews: Review[];
 };
 
 type Review = {
+	summary: string;
 	author: string;
 	plainText: string;
 	rating: number;

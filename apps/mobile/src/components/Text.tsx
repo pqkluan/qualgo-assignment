@@ -39,6 +39,5 @@ export const Text: FC<Props> = (props) => {
 const stylesheet = createStyleSheet((theme) => ({
 	text: {
 		color: theme.colors.typography,
-		fontFamily: theme.fontFamily,
 	},
 }));

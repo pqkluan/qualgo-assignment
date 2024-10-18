@@ -43,6 +43,7 @@ export const HomeScreen: FC<Props> = (props) => {
 
 const stylesheet = createStyleSheet((theme) => ({
 	searchBar: {
-		marginVertical: theme.margins.md,
+		marginTop: theme.margins.md,
+		marginBottom: theme.margins.xl,
 	},
 }));

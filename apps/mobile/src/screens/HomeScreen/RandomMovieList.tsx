@@ -8,6 +8,7 @@ import { EmptyList } from '@mobile/components/EmptyList';
 import { GenericError } from '@mobile/components/GenericError';
 
 import { MovieItem } from './MovieItem';
+import { useDelayEnabled } from '@mobile/hooks/useDelayEnabled';
 
 // Default data needs to be out of the component to prevent re-creation on each render
 const defaultData: Movie[] = [];
@@ -22,7 +23,14 @@ export const RandomMovieList: FC<Props> = (props) => {
 	const { onItemPress } = props;
 
 	const { styles, theme } = useStyles(stylesheet);
-	const { data = defaultData, isLoading, isFetched, isError, refetch } = useRandomMovies();
+	const apiEnabled = useDelayEnabled();
+	const {
+		data = defaultData,
+		isLoading,
+		isFetched,
+		isError,
+		refetch,
+	} = useRandomMovies({ enabled: apiEnabled });
 
 	const renderItem = useCallback<ListRenderItem<Movie>>(
 		({ item }) => <MovieItem item={item} onPress={onItemPress} />,
@@ -40,8 +48,6 @@ export const RandomMovieList: FC<Props> = (props) => {
 			ListEmptyComponent={isFetched ? EmptyList : undefined}
 			ListFooterComponent={Footer}
 			ItemSeparatorComponent={Separator}
-			initialNumToRender={3}
-			windowSize={7}
 			showsVerticalScrollIndicator={false}
 			refreshControl={
 				<RefreshControl

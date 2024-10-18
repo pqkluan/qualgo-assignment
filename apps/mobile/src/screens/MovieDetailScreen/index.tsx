@@ -1,32 +1,29 @@
 import { FC } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
 import { ScreenProps } from '@mobile/navigation/types/ScreenProps';
 import { useDidMount } from '@mobile/hooks/useDidMount';
+import { ScreenWrap } from '@mobile/components/ScreenWrap';
+
+import { MovieDetailScrollView } from './MovieDetailScrollView';
 
 type Props = ScreenProps<'MovieDetailScreen'>;
 
 export const MovieDetailScreen: FC<Props> = (props) => {
 	const { route, navigation } = props;
 	const { params } = route;
+	const movieId = params?.movieId;
 
 	useDidMount(() => {
-		if (typeof params?.movieId !== 'undefined') return;
+		if (typeof movieId !== 'undefined') return;
 		// Missing important data, pop by default
 		navigation.goBack();
 	});
 
+	// FIXME: missing back button
+
 	return (
-		<View style={styles.container}>
-			<Text>{`Post info of ${route.params.movieId}`}</Text>
-		</View>
+		<ScreenWrap testID='home-screen' safeTop={false} safeBottom={false}>
+			{!!movieId && <MovieDetailScrollView movieId={movieId} />}
+		</ScreenWrap>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-});

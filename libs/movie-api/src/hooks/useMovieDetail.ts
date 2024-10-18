@@ -1,8 +1,10 @@
 import { UndefinedInitialDataOptions, useQuery } from '@tanstack/react-query';
+import { decode } from 'html-entities';
 
 import { MovieDetail } from '../types';
+import { imdbApi } from '../imdb-api';
 import { queryKeys } from '../query-key-factory';
-import { movieApi } from '..';
+import { POSTER_RATIO } from '../constants';
 
 type Params = Omit<
 	UndefinedInitialDataOptions<MovieDetail, Error, MovieDetail, string[]>,
@@ -25,18 +27,20 @@ export const useMovieDetail = (params: Params) => {
 	return useQuery({
 		queryKey: queryKeys.movieDetail(movieId),
 		queryFn: async () => {
-			const result = await movieApi.getMovieDetail({ movieId });
+			const result = await imdbApi.getMovieDetail({ movieId });
 
 			return {
 				movieId,
-				title: result.short.name,
-				actors: result.short.actor.map((actor) => actor.name),
-				description: result.short.description,
-				keywords: result.short.keywords.split(','),
+				title: decode(result.short.name),
+				actors: result.short.actor.map((actor) => decode(actor.name)).filter(Boolean),
+				description: decode(result.short.description),
+				keywords: decode(result.short.keywords).split(',').filter(Boolean),
 				posterUrl: result.short.image,
+				posterRatio: POSTER_RATIO,
 				reviews: result.top.featuredReviews.edges.map<MovieDetail['reviews'][0]>((edge) => ({
+					summary: decode(edge.node.summary.originalText),
 					author: edge.node.author.nickName,
-					plainText: edge.node.text.originalText.plainText,
+					plainText: decode(edge.node.text.originalText.plainText),
 					rating: edge.node.authorRating,
 					date: edge.node.submissionDate,
 				})),

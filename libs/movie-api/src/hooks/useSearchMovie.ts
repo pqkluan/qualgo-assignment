@@ -1,5 +1,6 @@
 import { useDeferredValue } from 'react';
 import { UndefinedInitialDataOptions, useQuery } from '@tanstack/react-query';
+import { decode } from 'html-entities';
 
 import { imdbApi } from '../imdb-api';
 import { IMDbSearchResponse, Movie } from '../types';
@@ -43,7 +44,7 @@ export const useSearchMovie = (params: Params) => {
 
 			const searchResults = data.map<Movie>((data) => ({
 				movieId: data['#IMDB_ID'],
-				title: data['#TITLE'],
+				title: decode(data['#TITLE']),
 				posterUrl: data['#IMG_POSTER'],
 				posterRatio: POSTER_RATIO,
 			}));

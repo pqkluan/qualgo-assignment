@@ -35,7 +35,7 @@ export const SearchBar = forwardRef<TextInput, Props>((props, ref) => {
 	return (
 		<View style={[styles.container, containerStyle]}>
 			<View style={styles.inputBorder}>
-				<SearchIcon width={12} height={12} color={theme.colors.border} />
+				<SearchIcon width={12} height={12} color={theme.colors.typography} />
 
 				<TextInput
 					testID='search-input'
@@ -106,10 +106,9 @@ const stylesheet = createStyleSheet((theme) => ({
 		paddingHorizontal: theme.margins.lg,
 
 		borderWidth: 2,
-		borderColor: theme.colors.border,
+		borderColor: theme.colors.typography,
 		borderRadius: theme.radius.sm,
 
-		fontFamily: theme.fontFamily,
 		fontSize: 14,
 	},
 	textInput: {
