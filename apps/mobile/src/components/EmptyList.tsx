@@ -12,7 +12,7 @@ export const EmptyList: FC = () => {
 
 	return (
 		<View style={styles.container}>
-			<Text textAlign='center'>{'No search results found'}</Text>;
+			<Text textAlign='center'>{'No search results found'}</Text>
 		</View>
 	);
 };

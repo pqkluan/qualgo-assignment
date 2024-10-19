@@ -5,11 +5,11 @@ import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 import { useMovieDetail } from '@libs/movie-api';
+import { BackButton, BackButtonHeight } from '@mobile/components/BackButton';
 import { GenericError } from '@mobile/components/GenericError';
+import { useAnimateScrollViewHeader } from '@mobile/hooks/useAnimateScrollViewHeader';
 import { useDelayEnabled } from '@mobile/hooks/useDelayEnabled';
 
-import { BackButton, BackButtonHeight } from '@mobile/components/BackButton';
-import { useAnimateScrollViewHeader } from '@mobile/hooks/useAnimateScrollViewHeader';
 import { MovieDetailContent } from './MovieDetailContent';
 
 type Props = {
@@ -40,6 +40,7 @@ export const MovieDetailScrollView: FC<Props> = (props) => {
 		<Fragment>
 			<Animated.ScrollView
 				ref={scrollRef}
+				testID={'movie-detail-scroll-view'}
 				refreshControl={
 					<RefreshControl
 						refreshing={isFetching}
@@ -70,6 +71,6 @@ const stylesheet = createStyleSheet((theme, rt) => ({
 	header: {
 		position: 'absolute',
 		left: theme.margins.xl,
-		paddingTop: rt.insets.top,
+		paddingTop: rt.insets.top + theme.margins.md,
 	},
 }));

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
-import BackIcon from '@mobile/assets/icons/chevron-left.svg';
+import ChevronLeftIcon from '@mobile/assets/icons/chevron-left.svg';
 
 type Props = {
 	onPress?: () => void;
@@ -17,9 +17,14 @@ export const BackButton: FC<Props> = (props) => {
 	const { styles, theme } = useStyles(stylesheet);
 
 	return (
-		<TouchableOpacity onPress={onPress ?? navigation.goBack}>
+		<TouchableOpacity testID='back-button' onPress={onPress ?? navigation.goBack}>
 			<View style={styles.backButton}>
-				<BackIcon width={20} height={20} color={theme.colors.background} />
+				<ChevronLeftIcon
+					testID='chevron-left-icon'
+					width={20}
+					height={20}
+					color={theme.colors.background}
+				/>
 			</View>
 		</TouchableOpacity>
 	);

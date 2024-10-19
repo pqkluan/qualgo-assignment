@@ -11,7 +11,7 @@ import { GenericError } from '@mobile/components/GenericError';
 import { SearchResultItem } from './SearchResultItem';
 
 type Props = {
-	flatListRef: AnimatedRef<Animated.FlatList<unknown>>;
+	flatListRef?: AnimatedRef<Animated.FlatList<unknown>>;
 	searchKeyword: string;
 	headerTopPadding: number;
 	onItemPress: (username: string) => void;

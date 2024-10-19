@@ -19,7 +19,7 @@ export const useAnimateScrollViewHeader = (params: Params) => {
 	const { animateDistance } = params;
 
 	const scrollRef = useAnimatedRef<Animated.ScrollView>();
-	const scrollOffset = useScrollViewOffset(scrollRef);
+	const scrollOffset = useScrollViewOffset(scrollRef.current ? scrollRef : null);
 
 	const lastOffset = useSharedValue(0);
 	const lastOffsetDistance = useSharedValue(0);

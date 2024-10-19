@@ -2,9 +2,16 @@
 
 See [assignment.md](./docs/assignment.md) for the assignment details.
 
+## Summary
+
+This project is a monorepo managed by Nx. It contains two projects:
+
+- `apps/mobile`: A React Native project that implements the assignment requirements.
+- `libs/movie-api`: A TypeScript library that encapsulates the logic for fetching movie data from the API.
+
 ## How to run the project
 
-This monorepo is created and managed by Nx. To run the project, you need to have Nx installed globally.
+Since the monorepo is created and managed by Nx. To run the project, you need to have Nx installed globally.
 
 ```
 npm add --global nx@latest
@@ -28,4 +35,6 @@ Run `yarn nx run mobile:run-android` to build and run the Android application.
 
 ### Unit Test
 
-Run `yarn nx run mobile:test` to run the unit tests.
+Run `yarn nx run mobile:test` to run the unit tests for the mobile app.
+
+Run `yarn nx run movie-api:test` to run the unit tests for the movie api library.

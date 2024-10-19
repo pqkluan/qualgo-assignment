@@ -1,10 +1,22 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
-import '@testing-library/jest-native/extend-expect';
 
 import { App } from './App';
 
-test('renders correctly', () => {
-	const { getByTestId } = render(<App />);
-	expect(getByTestId('heading')).toHaveTextContent('Welcome');
+jest.mock('../screens/HomeScreen');
+
+describe('App', () => {
+	beforeEach(() => {
+		jest.spyOn(console, 'log').mockImplementation(() => undefined);
+	});
+
+	it('renders HomeScreen by default', () => {
+		const view = render(<App />);
+		expect(view.getByTestId('home-screen')).toBeDefined();
+	});
+
+	it('log info when navigation is ready', () => {
+		render(<App />);
+		expect(console.log).toHaveBeenCalledWith('Navigation is ready');
+	});
 });

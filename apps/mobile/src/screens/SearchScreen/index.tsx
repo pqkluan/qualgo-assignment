@@ -24,7 +24,7 @@ export const SearchScreen: FC<Props> = (props) => {
 	const [searchString, setSearchString] = useState('');
 
 	const handleSearchCancel = useCallback(() => {
-		navigation.pop();
+		navigation.goBack();
 	}, [navigation]);
 
 	const handleItemPress = useCallback(

@@ -20,7 +20,7 @@ export const MovieDetailScreen: FC<Props> = (props) => {
 	});
 
 	return (
-		<ScreenWrap testID='home-screen' safeTop={false} safeBottom={false}>
+		<ScreenWrap testID='movie-detail-screen' safeTop={false} safeBottom={false}>
 			{!!movieId && <MovieDetailScrollView movieId={movieId} />}
 		</ScreenWrap>
 	);

@@ -4,6 +4,5 @@
 	"sourceRoot": "libs/movie-api/src",
 	"projectType": "library",
 	"tags": [],
-	"// targets": "to see all targets run: nx show project movie-api --web",
 	"targets": {}
 }

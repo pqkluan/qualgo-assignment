@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { useDidMount } from './useDidMount';
 
@@ -10,10 +10,17 @@ import { useDidMount } from './useDidMount';
  * @returns
  */
 export const useDelayEnabled = (delay = 10) => {
+	const timerRef = useRef<NodeJS.Timeout>(null);
 	const [enabled, setEnabled] = useState(false);
 
 	useDidMount(() => {
-		setTimeout(() => setEnabled(true), delay);
+		timerRef.current = setTimeout(() => {
+			setEnabled(true);
+			timerRef.current = null;
+		}, delay);
+		return () => {
+			if (timerRef.current) clearTimeout(timerRef.current);
+		};
 	});
 
 	return enabled;

@@ -18,7 +18,7 @@ const defaultData: Movie[] = [];
 const keyExtractor = (item: Movie) => item.movieId;
 
 type Props = {
-	flatListRef: AnimatedRef<Animated.FlatList<unknown>>;
+	flatListRef?: AnimatedRef<Animated.FlatList<unknown>>;
 	headerTopPadding: number;
 	onItemPress: (movieId: string) => void;
 };

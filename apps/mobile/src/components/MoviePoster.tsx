@@ -16,6 +16,7 @@ export const MoviePoster: FC<Props> = (props) => {
 
 	return (
 		<FastImage
+			testID='movie-poster'
 			source={{
 				uri,
 				priority: FastImage.priority.high,

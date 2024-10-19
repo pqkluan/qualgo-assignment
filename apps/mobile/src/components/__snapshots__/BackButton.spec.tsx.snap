@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackButton match snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+  testID="back-button"
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#000000",
+        "borderRadius": 21,
+        "height": 42,
+        "justifyContent": "center",
+        "width": 42,
+      }
+    }
+  >
+    <SvgMock
+      color="#FFFFFF"
+      height={20}
+      testID="chevron-left-icon"
+      width={20}
+    />
+  </View>
+</View>
+`;
