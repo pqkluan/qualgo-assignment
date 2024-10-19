@@ -66,6 +66,9 @@ To run movie api library unit tests, run:
 ```bash
 yarn nx run movie-api:test
 ```
+## Demo Video
+
+https://github.com/user-attachments/assets/b442a402-89b5-4e15-95d9-8b329a7a18b2
 
 ## Screenshots
 
