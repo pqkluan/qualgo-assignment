@@ -13,33 +13,59 @@ This project is a monorepo managed by Nx. It contains two projects:
 
 Since the monorepo is created and managed by Nx. To run the project, you need to have Nx installed globally.
 
-```
+```bash
 npm add --global nx@latest
 ```
 
 Assuming you already have React Native development environment setup, follow the steps below to run the project.
 
-Install the dependencies by running `yarn` at the root of the project.
+Then install the dependencies by running this at the root of the project.
+
+```bash
+yarn
+```
 
 ### iOS
 
-Run `yarn nx run mobile:pod-install` to install pods.
+> Note: To run the iOS application, you need to have Xcode & CocoaPod installed.
 
-Run `yarn nx run mobile:run-ios` to build and run the iOS application.
+To install the pods, run:
+
+```bash
+yarn nx run mobile:pod-install
+```
+
+To run the iOS application, run:
+
+```bash
+yarn nx run mobile:run-ios
+```
 
 ### Android
 
-> Please make sure you have an Android emulator running or a physical device connected.
+> Note: Please make sure you have an Android emulator running or a physical device connected.
 
-Run `yarn nx run mobile:run-android` to build and run the Android application.
+To run the Android application, run:
+
+```bash
+yarn nx run mobile:run-android
+```
 
 ## Test
 
 ### Unit Test
 
-Run `yarn nx run mobile:test` to run the unit tests for the mobile app.
+To run mobile app unit tests, run:
 
-Run `yarn nx run movie-api:test` to run the unit tests for the movie api library.
+```bash
+yarn nx run mobile:test
+```
+
+To run movie api library unit tests, run:
+
+```bash
+yarn nx run movie-api:test
+```
 
 ## Screenshots
 
