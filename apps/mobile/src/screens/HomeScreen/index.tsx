@@ -1,5 +1,5 @@
 import { FC, useCallback } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Platform, TouchableOpacity, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
@@ -12,7 +12,7 @@ import { ScreenProps } from '@mobile/navigation/types/ScreenProps';
 import { RandomMovieList } from './RandomMovieList';
 
 // Search bar height + top margin + bottom margin
-const SearchBarHeight = 30 + 8 + 12;
+const SearchBarHeight = Platform.select({ ios: 30, android: 40 }) + 8 + 12;
 
 type Props = ScreenProps<'HomeScreen'>;
 
